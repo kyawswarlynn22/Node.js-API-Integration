@@ -1,17 +1,15 @@
+
 const router = require('express').Router();
+const controller = require('../controller/user');
 
-router.get('/', (req, res) => {
-    res.status(200).json({mes: "All User Get."})
-})
+router.get('/',  controller.all )
 
-router.post('/', (req, res) => {
-    res.status(200).json(req.body);
-})
+router.post('/',  controller.post )
 
 router.route('/:id')
-.get((req, res) => res.status(200).json(req.params.id))
-.patch((req,res) =>  res.status(200).json(req.body))
-.delete((req,res) =>  res.status(200).json({ mes: `Delete id is ${req.params.id}`}))
+.get( controller.get)
+.patch( controller.patch)
+.delete( controller.drop)
 
 
 module.exports = router;
